@@ -1,0 +1,11 @@
+START   100
+        MOVER   AREG, A
+        ADD     AREG, ='5'
+        MOVER   BREG, B
+        ADD     BREG, ='10'
+A       DS      1
+B       DS      1
+        LTORG
+        PRINT   A
+        STOP
+        END
