@@ -69,13 +69,17 @@ Address  Machine_Code    Assembly_Equivalent
 ### Compilation & Execution
 ```bash
 # Navigate to Pass 2 directory
-cd "Pass 2"
+cd PRACTICAL/CODE/Pass2-Assembler
 
-# Compile the program
-javac pass2.java
+# Option A: Use helper script (recommended)
+./prepare_output.sh   # macOS/Linux
 
-# Run the assembler
-java pass2
+# Option B: Manual steps
+# 1) Ensure Pass1 has produced output at ../Pass1-Assembler/output.txt
+# 2) Copy it here as Output.txt
+# 3) Compile and run
+javac Pass2.java
+java Pass2
 ```
 
 ## 📝 Intermediate Code Processing
