@@ -1,9 +1,14 @@
-public class arglist
-{
+public class arglist {
     String argname;
+    String value;
 
-    public arglist(String argument) {
-        argname = argument;
+    arglist(String argname) {
+        this.argname = argname;
+        this.value = "";
     }
-    
+
+    arglist(arglist a) {
+        this.argname = a.argname;
+        this.value = a.value;
+    }
 }

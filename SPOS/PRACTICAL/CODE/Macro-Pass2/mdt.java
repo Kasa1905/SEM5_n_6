@@ -1,11 +1,6 @@
-
-public class mdt {
-    String stm;
-
-    public mdt() {
-        stm = "";
-
+public class mdt{
+    String stmnt;
+    public mdt(){
+        stmnt="";
     }
-    
-    
 }

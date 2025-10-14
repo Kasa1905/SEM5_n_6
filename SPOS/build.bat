@@ -1,108 +1,66 @@
 @echo off
-REM SPOS Build Script for Windows
-REM This script compiles all Java programs in the SPOS repository
+REM Universal SPOS Build Script for Windows
+REM Builds all programs with cross-platform compatibility
 
-echo 🚀 SPOS Build Script - Compiling all Java programs...
-echo ==================================================
+echo 🚀 Building SPOS Laboratory Programs...
+echo ========================================
 
-REM Function to compile Java files in a directory
-goto :main
+set success_count=0
+set total_count=0
 
-:compile_directory
-set "dir=%~1"
-set "name=%~2"
+REM Function to build a program (Windows batch version)
+call :build_program "PRACTICAL\CODE\CPU scheduling" "CPU Scheduling"
+call :build_program "PRACTICAL\CODE\Memory Management" "Memory Management"  
+call :build_program "PRACTICAL\CODE\Page replacement" "Page Replacement"
+call :build_program "PRACTICAL\CODE\Pass 1" "Pass 1 Assembler"
+call :build_program "PRACTICAL\CODE\Pass 2" "Pass 2 Assembler"
+call :build_program "PRACTICAL\CODE\Macro Pass1" "Macro Pass 1"
+call :build_program "PRACTICAL\CODE\Macro Pass 2" "Macro Pass 2"
+call :build_program "PRACTICAL\CODE\Deadlock (Bankers)" "Banker's Algorithm"
+call :build_program "PRACTICAL\CODE\Reader Writer Problem" "Reader-Writer Problem"
+call :build_program "PRACTICAL\CODE\JNI DLL" "JNI Calculator (Simplified)"
+call :build_program "PRACTICAL\CODE\DLL" "JNI Calculator (Advanced)"
 
-if exist "%dir%" (
-    echo 📂 Compiling %name%...
-    cd /d "%dir%"
-    
-    REM Check if Java files exist and compile all together
-    dir /b *.java >nul 2>&1
-    if !errorlevel! equ 0 (
-        echo    ⚡ Compiling all Java files together...
-        javac *.java
-        if !errorlevel! equ 0 (
-            echo    ✅ All Java files compiled successfully
-            REM List compiled files for verification
-            for %%f in (*.java) do (
-                echo    ✅ %%f compiled successfully
-            )
-        ) else (
-            echo    ❌ Error compiling Java files
-        )
-    ) else (
-        echo    ℹ️  No Java files found in %dir%
-    )
-    
-    cd /d "%~dp0PRACTICAL\CODE"
-    echo.
-) else (
-    echo ❌ Directory %dir% not found
-    echo.
-)
+echo ========================================
+echo 📊 Build Summary
+echo ========================================
+echo Total Programs: %total_count%
+echo Successful: %success_count%
+
+echo.
+echo 🚀 Ready to run! Check individual README files for usage instructions.
+pause
 goto :eof
 
-:main
-setlocal enabledelayedexpansion
+:build_program
+set "dir=%~1"
+set "name=%~2"
+set /a total_count+=1
 
-REM Navigate to PRACTICAL\CODE directory
-if exist "PRACTICAL\CODE" (
-    cd /d "PRACTICAL\CODE"
-) else (
-    echo ❌ PRACTICAL\CODE directory not found!
-    echo Please run this script from the SPOS root directory.
-    pause
-    exit /b 1
-)
-
-REM Compile all program categories
-call :compile_directory "CPU-Scheduling" "CPU Scheduling Algorithms"
-call :compile_directory "Memory-Management" "Memory Management Algorithms"
-call :compile_directory "Page-Replacement" "Page Replacement Algorithms"
-call :compile_directory "Bankers-Algorithm" "Banker's Algorithm"
-call :compile_directory "Pass1-Assembler" "Pass 1 Assembler"
-call :compile_directory "Pass2-Assembler" "Pass 2 Assembler"
-call :compile_directory "Macro-Pass1" "Macro Processor Pass 1"
-call :compile_directory "Macro-Pass2" "Macro Processor Pass 2"
-call :compile_directory "Reader-Writer-Problem" "Reader-Writer Problem"
-
-REM Special handling for JNI-DLL
-if exist "JNI-DLL" (
-    echo 📂 Compiling JNI-DLL ^(Java Native Interface^)...
-    cd /d "JNI-DLL"
+if exist "%dir%" (
+    echo Building: %name%
+    pushd "%dir%"
     
-    REM Compile Java files first
-    for %%f in (*.java) do (
-        echo    ⚡ Compiling %%f
-        javac "%%f"
-        if !errorlevel! equ 0 (
-            echo    ✅ %%f compiled successfully
+    if exist "build.bat" (
+        call build.bat >nul 2>&1
+        if %errorlevel%==0 (
+            echo   ✅ Success
+            set /a success_count+=1
         ) else (
-            echo    ❌ Error compiling %%f
+            echo   ❌ Failed
+        )
+    ) else (
+        for %%f in (*.java) do javac "%%f" >nul 2>&1
+        if %errorlevel%==0 (
+            echo   ✅ Success  
+            set /a success_count+=1
+        ) else (
+            echo   ⚠️ Manual compilation may be needed
         )
     )
     
-    REM Note about native compilation
-    echo    ⚠️  For native library compilation on Windows:
-    echo    1. Install Microsoft Visual Studio or MinGW
-    echo    2. Run: gcc -shared -o mathops.dll mathops.c -I"%JAVA_HOME%\include" -I"%JAVA_HOME%\include\win32"
-    
-    cd /d "%~dp0PRACTICAL\CODE"
-    echo.
+    popd
+) else (
+    echo ⚠️ Directory not found: %dir%
 )
-
-echo 🎉 Build complete!
-echo.
-echo 📋 Usage Instructions:
-echo ====================
-echo 1. Navigate to any program directory
-echo 2. Run: java ^<ClassName^>
-echo 3. Follow the program prompts
-echo.
-echo Example:
-echo cd CPU-Scheduling ^&^& java FCFS
-echo.
-echo For JNI programs:
-echo cd JNI-DLL ^&^& java InteractiveDMASCalculator
-
-pause
+goto :eof

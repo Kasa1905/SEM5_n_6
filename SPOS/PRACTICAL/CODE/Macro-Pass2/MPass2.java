@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class MPass2 {
+public class Mpass2 {
     public static void main(String[] args) throws IOException {
         mdt[] MDT = new mdt[50];
         mnt[] MNT = new mnt[20];
@@ -16,7 +16,15 @@ public class MPass2 {
             if (parts.length >= 2) {
                 String name = parts[0];
                 int addr = Integer.parseInt(parts[1]);
-                MNT[mnt_cnt++] = new mnt(name, addr);
+                int argCnt = 0;
+                if (parts.length >= 3) {
+                    try {
+                        argCnt = Integer.parseInt(parts[2]);
+                    } catch (NumberFormatException ignore) {
+                        argCnt = 0;
+                    }
+                }
+                MNT[mnt_cnt++] = new mnt(name, addr, argCnt);
             }
         }
         brl.close();
@@ -24,7 +32,7 @@ public class MPass2 {
         System.out.println("\n\t****** Macro Name Table ******");
         System.out.println("\n\tIndex\tName\tAddress");
         for (int i = 0; i < mnt_cnt; i++) {
-            System.out.println("\t" + i + "\t" + MNT[i].name + "\t" + MNT[i].address);
+            System.out.println("\t" + i + "\t" + MNT[i].name + "\t" + MNT[i].addr);
         }
 
         brl = new BufferedReader(new FileReader("ARGLIST.txt"));
@@ -44,14 +52,14 @@ public class MPass2 {
         brl = new BufferedReader(new FileReader("MDT.txt"));
         while ((line = brl.readLine()) != null) {
             MDT[mdt_cnt] = new mdt();
-            MDT[mdt_cnt++].stm = line.trim();
+            MDT[mdt_cnt++].stmnt = line.trim();
         }
         brl.close();
 
         System.out.println("\n\t****** Macro Definition Table ******");
         System.out.println("\n\tIndex\t\tStatement");
         for (int i = 0; i < mdt_cnt; i++) {
-            System.out.println("\t" + i + "\t" + MDT[i].stm);
+            System.out.println("\t" + i + "\t" + MDT[i].stmnt);
         }
 
         brl = new BufferedReader(new FileReader("Intermediate.txt"));
@@ -83,9 +91,9 @@ public class MPass2 {
             if (!isMacroCall) {
                 bwl.write(line + "\n");
             } else {
-                macro_addr = MNT[macro_call].address;
+                macro_addr = MNT[macro_call].addr;
                 while (macro_addr < mdt_cnt) {
-                    String stmt = MDT[macro_addr].stm;
+                    String stmt = MDT[macro_addr].stmnt;
                     if (stmt.equalsIgnoreCase("MEND")) break;
                     String[] temp_tokens = stmt.split("\\s+");
                     for (int t = 0; t < temp_tokens.length; t++) {

@@ -1,15 +1,11 @@
-
-
 public class mnt {
     String name;
-    int address;
+    int addr;
+    int arg_cnt;
 
-    public mnt(String nm , int addr) {
-        name = nm;
-        address = addr;
-
+    mnt(String name, int addr, int arg_cnt) {
+        this.name = name;
+        this.addr = addr;
+        this.arg_cnt = arg_cnt;
     }
-    
-    
-    
 }
