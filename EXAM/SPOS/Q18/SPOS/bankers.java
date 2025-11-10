@@ -1,3 +1,4 @@
+package SPOS.EXAM.SPOS.Q18.SPOS;
 import java.util.Scanner;
 class bankers
 {
