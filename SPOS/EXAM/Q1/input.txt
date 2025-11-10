@@ -1,0 +1,14 @@
+START 100
+READ X
+LOAD X
+ADD Y
+STORE Z
+STOP
+X DS 1
+Y DS 1
+Z DS 1
+END
+movem b ='7'
+ds a 02
+dc b 10
+end

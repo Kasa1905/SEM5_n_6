@@ -14,7 +14,7 @@ Complete implementation of system programming concepts including:
 - **Assembler Implementation** (Two-Pass Assembler)
 - **Macro Processor** (Two-Pass Macro Processing)
 - **Synchronization** (Reader-Writer Problem)
-- **JNI Integration** (Java Native Interface with C)
+- **DLL Implementation** (Java Native Interface with C for Dynamic Link Libraries)
 
 ## 🗂️ Repository Structure
 
@@ -30,8 +30,26 @@ SEM5/
 │   │   ├── Pass2-Assembler/       # Assembler Pass 2
 │   │   ├── Macro-Pass1/           # Macro Processor Pass 1
 │   │   ├── Macro-Pass2/           # Macro Processor Pass 2
-│   │   ├── Reader-Writer-Problem/ # Synchronization
-│   │   └── JNI-DLL/              # Java Native Interface
+│   │   └── Reader-Writer-Problem/ # Synchronization
+│   ├── EXAM/                      # Organized exam questions
+│   │   ├── Q1/                    # Pass1 Assembler
+│   │   ├── Q2/                    # Pass2 Assembler
+│   │   ├── Q3/                    # Macro Pass1
+│   │   ├── Q4/                    # Macro Pass2
+│   │   ├── Q5/                    # DLL Implementation (JNI)
+│   │   ├── Q6/                    # Best Fit Memory Management
+│   │   ├── Q7/                    # FCFS Scheduling
+│   │   ├── Q8/                    # SJF Scheduling
+│   │   ├── Q9/                    # Round Robin Scheduling
+│   │   ├── Q10/                   # Priority Non-Preemptive
+│   │   ├── Q11/                   # Priority Preemptive
+│   │   ├── Q12/                   # Reader-Writer Problem
+│   │   ├── Q13/                   # JNI Calculator
+│   │   ├── Q14/                   # Worst Fit Memory Management
+│   │   ├── Q15/                   # FIFO Page Replacement
+│   │   ├── Q16/                   # Optimal Page Replacement
+│   │   ├── Q17/                   # LRU Page Replacement
+│   │   └── Q18/                   # Banker's Algorithm
 │   ├── Documentation/             # Lab manuals and guides
 │   ├── build.sh / build.bat       # Cross-platform build scripts
 │   └── README.md                  # Detailed SPOS guide

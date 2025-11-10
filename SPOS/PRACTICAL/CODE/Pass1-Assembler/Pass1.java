@@ -102,7 +102,7 @@ class pass1 {
                             bw.write("\t(IS," + (pos) +")");
                             optab[optab_cnt++] = new Obj(tokens[k], pos);
                         } else {
-                            pos = search(tokens[k], DL); // DC/DS
+                            pos = search(tokens[k], DL); 
                             if (pos != -1) 
                             {
                                 if(pos == 0) 
@@ -111,7 +111,7 @@ class pass1 {
                                     optab[optab_cnt++] = new Obj(tokens[k], pos);
                                     fill_addr = true;
                                 
-                            } else if (tokens[k].matches("[a-zA-Z]+:")) { //label
+                            } else if (tokens[k].matches("[a-zA-Z]+:")) { 
                                 pos = search(tokens[k], symb_table, total_symb);
                                 if (pos == -1) {
                                     symb_table[total_symb++] = new Obj(tokens[k].substring(0, tokens[k].length() - 1), loc - 1);
@@ -125,14 +125,14 @@ class pass1 {
                     if (pos == -1) {
                         pos = search(tokens[k], REG);
                         if (pos != -1) {
-                            bw.write("\t(RG," + (pos + 1) +")"); //register
+                            bw.write("\t(RG," + (pos + 1) +")"); 
                         } else {
-                            if (tokens[k].matches("='(\\d+)'")) { //literal
+                            if (tokens[k].matches("='(\\d+)'")) { 
                                 String s = tokens[k].substring(2, 3);
                                 literal_table[total_ltr++] = new Obj(s, 0);
                                 bw.write("\t(L," + total_ltr + ")");
                             } 
-                            else if (tokens[k].matches("\\d+") || tokens[k].matches("\\d+H") || tokens[k].matches("\\d+h") || tokens[k].matches("\\d+D") || tokens[k].matches("\\d+d")) { //constant
+                            else if (tokens[k].matches("\\d+") || tokens[k].matches("\\d+H") || tokens[k].matches("\\d+h") || tokens[k].matches("\\d+D") || tokens[k].matches("\\d+d")) { 
                                 bw.write("\t(C," + tokens[k] + ")");
                                 temp1 = Integer.parseInt(tokens[k]);
                             } 
