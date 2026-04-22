@@ -1,3 +1,0 @@
-MNT.txt
-INCR 0
-DECR 5

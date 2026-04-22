@@ -1,7 +1,0 @@
-ARG.txt
-&X
-&Y
-&REG1 AREG
-&A
-&B
-&REG2 BREG

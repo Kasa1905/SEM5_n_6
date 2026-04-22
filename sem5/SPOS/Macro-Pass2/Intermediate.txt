@@ -1,0 +1,8 @@
++START
++LOAD A,#1
++ADD A,#2
++STORE A,#1
++LOAD A,#1
++ADD A,=5
++STORE A,#1
++END
