@@ -1,92 +1,84 @@
-# 🎓 Semester 5 - Computer Science Lab Implementations
+# SEM5_n_6
 
-Computer Science laboratory programs for **Semester 5** - SPOS and DBMS implementations.
+This repository contains practical programs, notes, and exam-oriented implementations for Semester 5 and Semester 6 coursework.
 
-## 📚 Subjects Covered
+## Scope
 
-### 🖥️ **SPOS (System Programming and Operating System)**
-- **CPU Scheduling** - FCFS, SJF, Priority, Round Robin
-- **Memory Management** - First Fit, Best Fit, Worst Fit
-- **Page Replacement** - FIFO, LRU, Optimal
-- **Assembler** - Two-Pass Assembler Implementation
-- **Macro Processor** - Two-Pass Macro Processing
-- **Deadlock Prevention** - Banker's Algorithm
-- **Synchronization** - Reader-Writer Problem
-- **JNI Integration** - Dynamic Link Library
+- sem5
+	- SPOS implementations (CPU scheduling, memory management, page replacement, assembler, macro processor, synchronization, deadlock handling)
+	- Exam-wise SPOS questions (`Q1` to `Q18`)
+	- DBMS material (SQL, PL/SQL, MongoDB, connectivity)
+- sem6
+	- AI resources
+	- CC resources
 
-### 🗄️ **DBMS (Database Management System)**
-- **SQL Fundamentals** - DDL, DML, Joins
-- **PL/SQL Programming** - Procedures, Functions, Triggers
-- **Database Connectivity** - Application Integration
-- **MongoDB Operations** - CRUD, Aggregation, Map-Reduce
-- **Advanced Queries** - Complex SQL Operations
+## Repository Layout
 
-## 🗂️ Repository Structure
-
-```
-SEM5/
-├── SPOS/
-│   └── PRACTICAL/CODE/     # Reference implementations
-├── EXAM/                   # Organized by subject
-│   ├── SPOS/              # SPOS exam questions
-│   │   ├── Q1-Q18/        # Individual question folders
-│   │   └── LP-I_SPOS_Writeup.pdf
-│   └── DBMS/              # DBMS lab implementations
-│       ├── SQL files      # Database scripts
-│       ├── MongoDB files  # NoSQL operations
-│       └── DBMSL lab Manual.pdf
-├── LICENSE
-└── README.md
+```text
+sem5/
+	EXAM/
+		DBMS/
+		SPOS/
+	SPOS/
+		CPU-Scheduling/
+		Deadlock-Bankers/
+		Macro-Pass1/
+		Macro-Pass2/
+		Memory-Management/
+		Page-Replacement/
+		Pass1-Assembler/
+		Pass2-Assembler/
+		Reader-Writer-Problem/
+sem6/
+	AI/
+	CC/
 ```
 
-## 🚀 Quick Start (Ubuntu)
+## Common File Types
 
-### Prerequisites
+- Java source files (`.java`)
+- Python scripts (`.py`)
+- C source files (`.c`)
+- Input/output and reference text files (`.txt`)
+
+## How To Run
+
+### Java programs
+
 ```bash
-sudo apt update
-sudo apt install openjdk-11-jdk gcc git mysql-server mongodb
+cd sem5/SPOS/CPU-Scheduling
+javac FCFS.java
+java FCFS
 ```
 
-### Clone and Run
+For question-wise exam folders:
 
-#### SPOS Programs
 ```bash
-git clone https://github.com/Kasa1905/SEM5.git
-cd SEM5/EXAM/SPOS/Q1
+cd sem5/EXAM/SPOS/Q1
 javac Pass1.java
-java pass1
+java Pass1
 ```
 
-#### DBMS Scripts
+### Python scripts
+
 ```bash
-cd SEM5/EXAM/DBMS
-# Run SQL scripts with MySQL
-mysql -u root -p < "SQL DDL & DML.txt"
-# Run MongoDB operations
-mongosh < "MongoDB CRUD.txt"
+cd sem5/EXAM/SPOS/Q10/HCI
+python3 online_quiz.py
 ```
 
-### Run Any Question
+### C programs
+
 ```bash
-cd EXAM/SPOS/Q[number]     # Replace [number] with question number
-javac *.java
-java [MainClass]           # Replace with main class name
+cd sem5/EXAM/SPOS/Q5
+gcc mathcalc.c -o mathcalc
+./mathcalc
 ```
 
-## 📋 Program Categories
+## Notes
 
-### SPOS Implementation
-- **Q1-Q4**: Assembler and Macro Processor
-- **Q5**: Dynamic Link Library (JNI)
-- **Q6-Q14**: Memory Management and CPU Scheduling
-- **Q15-Q18**: Page Replacement and Deadlock Prevention
+- Some folders contain alternate implementations of similar algorithms for practice.
+- Text files in DBMS and SPOS sections are intended as practical inputs, outputs, and study notes.
 
-### DBMS Implementation
-- **SQL Operations**: Basic to advanced database queries
-- **PL/SQL**: Stored procedures, functions, and triggers
-- **MongoDB**: NoSQL database operations and aggregation
-- **Connectivity**: Database application integration
+## License
 
-## 📝 License
-
-MIT License - Free to use for educational purposes.
+This project is licensed under the MIT License. See `LICENSE` for details.

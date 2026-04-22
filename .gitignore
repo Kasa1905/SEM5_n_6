@@ -1,0 +1,52 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Logs
+*.log
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+hs_err_pid*
+
+# JVM build output directories
+bin/
+out/
+build/
+
+# C/C++ build artifacts
+*.o
+*.obj
+*.so
+*.a
+*.dylib
+*.exe
+*.out
+myprogram
+mathcalc
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+
+# IDE/editor
+.vscode/*
+!.vscode/tasks.json
+.idea/
+*.iml
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
